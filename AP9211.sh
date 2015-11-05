@@ -1,5 +1,13 @@
 #!/bin/bash
 
+TELNET=`which telnet`
+
+if [$TELNET == ""]
+then
+	echo "telnet is not installed. Please install telnet and try again."
+	exit 1
+fi
+
 ver=1.0
 esc=$'\e'
 tab=$'\t'
@@ -53,3 +61,5 @@ sleep ${wait};echo "${esc}"
 sleep ${wait};echo "4${eol}"
 sleep 3
 ) | telnet ${host}
+
+exit 0
